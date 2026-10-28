@@ -24,3 +24,10 @@ print (df.duplicated(subset=["track_id"]).sum())
 df = df.drop_duplicates()
 print (df.shape)
 print (df.duplicated(subset=["track_id"]).sum())
+
+#grouping
+avg_popularity = df.groupby("track_genre")["popularity"].mean()
+avg_popularity = avg_popularity.sort_values(ascending=False)
+avg_popularity = avg_popularity.round(2)
+print(avg_popularity.head(10))
+print(avg_popularity.tail(5))
