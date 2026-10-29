@@ -31,3 +31,14 @@ avg_popularity = avg_popularity.sort_values(ascending=False)
 avg_popularity = avg_popularity.round(2)
 print(avg_popularity.head(10))
 print(avg_popularity.tail(5))
+
+#fastest genre by tempo
+avg_tempo = df.groupby("track_genre")["tempo"].mean()
+avg_tempo = avg_tempo.sort_values(ascending=False)
+avg_tempo = avg_tempo.round(1)
+print(avg_tempo.head(10))
+
+#count song
+songs = df.drop_duplicates(subset=["track_id"])
+print(songs.shape)
+print(songs["artists"].value_counts().head(10))
