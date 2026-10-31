@@ -42,3 +42,11 @@ print(avg_tempo.head(10))
 songs = df.drop_duplicates(subset=["track_id"])
 print(songs.shape)
 print(songs["artists"].value_counts().head(10))
+
+#compare audio features between genres
+avg_types = df.groupby("track_genre")[["danceability", "energy", "valence"]].mean()
+avg_types = avg_types.sort_values(by="valence", ascending=False)
+avg_types = avg_types.round(2)
+print(avg_types.loc[["sad", "happy", "chill"]])
+print(avg_types.head(5))
+
