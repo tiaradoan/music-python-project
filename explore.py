@@ -50,3 +50,6 @@ avg_types = avg_types.round(2)
 print(avg_types.loc[["sad", "happy", "chill"]])
 print(avg_types.head(5))
 
+
+
+
