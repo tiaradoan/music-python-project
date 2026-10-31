@@ -46,8 +46,6 @@ Ex) git add requirements.txt notes.md (name separated by spaces)
 | `df = df.drop_duplicates()` | Removes exact copy rows |
 | `songs = df.drop_duplicates(subset=["track_id"])` | Keeps one row per song, saved as a new table `songs` |
 
-Remember: `df = ...` saves the change. Without it, nothing changes.
-
 ### Analyse
 
 | Code | What it does |
@@ -61,7 +59,6 @@ Remember: `df = ...` saves the change. Without it, nothing changes.
 | `.loc[["sad", "happy", "chill"]]` | Picks rows by their names |
 | `songs["artists"].value_counts().head(10)` | The 10 most common artists |
 
-How to read groupby: "average **B** per **A**". A = the groups, B = the numbers.
 
 ### () vs []
 
@@ -72,4 +69,3 @@ How to read groupby: "average **B** per **A**". A = the groups, B = the numbers.
 | `[ , ]` | A **list** of several things | `["sad", "happy", "chill"]` |
 | `[[ , ]]` | **Pick** using a **list** (several at once) | `df[["energy", "valence"]]` |
 
-You can only use names that already exist in the data. Check them with `df.columns` (column names) or `.unique()` (values in a column).
