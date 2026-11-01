@@ -13,7 +13,7 @@ df = df.dropna()
 df = df.drop_duplicates()
 
 st.title("Music Data")
-st.write("Number of songs: ", df.shape[0])
+st.write("Number of rows: ", df.shape[0])
 st.dataframe(df)
 
 
