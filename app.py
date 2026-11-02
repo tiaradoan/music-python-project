@@ -16,4 +16,13 @@ st.title("Music Data")
 st.write("Number of rows: ", df.shape[0])
 st.dataframe(df)
 
+#dropdown
+genres = df["track_genre"].unique()
+option = st.selectbox("Pick a genre: ", genres)
+st.write("You picked: ", option)
+
+#new table
+genre_songs = df[df["track_genre"] == option]
+genre_songs = genre_songs.sort_values(by="popularity", ascending = False)
+st.dataframe(genre_songs.head(10))
 
