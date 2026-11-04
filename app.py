@@ -26,3 +26,12 @@ genre_songs = df[df["track_genre"] == option]
 genre_songs = genre_songs.sort_values(by="popularity", ascending = False)
 st.dataframe(genre_songs.head(10))
 
+#popularity overall
+avg_popularity = df.groupby("track_genre")["popularity"].mean()
+avg_popularity = avg_popularity.sort_values(ascending = False)
+st.subheader("Top 10 most popular genres")
+st.bar_chart(avg_popularity.head(10), sort = False)
+
+
+
+
