@@ -32,6 +32,17 @@ avg_popularity = avg_popularity.sort_values(ascending = False)
 st.subheader("Top 10 most popular genres")
 st.bar_chart(avg_popularity.head(10), sort = False)
 
+#energy bar
+energy_bar = st.slider("Energy Level", 0.0, 1.0, 0.8)
+energy_level = df[df["energy"] >= energy_bar]
+energy_level = energy_level.drop_duplicates(subset= ["track_id"])
+st.write("This energy level or higher: ", energy_level.shape[0])
+energy_level = energy_level.sort_values(by = "popularity", ascending = False)
+st.write(energy_level.head(10))
+
+
+
+
 
 
 
