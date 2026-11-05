@@ -1,4 +1,5 @@
-# Have you ever wondered which genres are the most popular, or couldn't find a song that matches your mood? This app explores a Spotify dataset of 114,000 songs across 114 genres. Pick a genre to see its top songs, or choose an energy level to find popular songs that match it.
+# Music Data Explorer
+Have you ever wondered which genres are the most popular, or couldn't find a song that matches your mood? This app explores a Spotify dataset of 114,000 songs across 114 genres. Pick a genre to see its top songs, or choose an energy level to find popular songs that match it.
 
 **Coming soon:** upload your own YouTube or Spotify history and see your personal stats.
 
