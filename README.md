@@ -9,3 +9,9 @@ Live app: https://td-music-data.streamlit.app
 - Pick a genre and see its 10 most popular songs
 - Bar chart of the 10 most popular genres
 - Energy slider to find popular songs that match your mood
+
+## Screenshots
+![Table of full number of rows](images/table.png)
+![Energy level slider with table](images/energy.png)
+![Popularity chart](images/popularity.png)
+![Chosen genres](images/genres.png)
