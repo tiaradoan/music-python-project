@@ -19,7 +19,7 @@ Live app: https://td-music-data.streamlit.app
 ## What I found
 - The most popular genre is Pop-film with average popularity of 59.3 out of 100 
 - The fastest genre by tempo is drum and bass with about 155BPM, followed by happy (153BPM) and hard style (147BPM)
-- Happy genre scores less than sad genre in valence with 0.33 and 0.42, perspectively
+- Happy genre scores less than sad genre in valence with 0.33 and 0.42, respectively
 
 ## How to run it
 ```
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Build with 
+## Built with 
 - Python
 - Pandas
 - Streamlit
