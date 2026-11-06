@@ -32,8 +32,10 @@ streamlit run app.py
 ```
 
 ## Build with 
-Python, Pandas, Streamlit
-Data: Spotify Tracks Dataset from Kaggle
+- Python
+- Pandas
+- Streamlit
+- Data source: Spotify Tracks Dataset from Kaggle
 
 ## What I learned 
 - Clean up, gather and analyze data using Pandas
