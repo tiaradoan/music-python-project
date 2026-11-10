@@ -35,6 +35,12 @@ not_official = history[~history["title"].str.contains("Official|Music Video|Audi
 vu_missed = not_official[not_official["channel"] == "Vũ Official"]
 #print(vu_missed["title"].value_counts().head(30))
 
+#time limit
+official["time"] = pd.to_datetime(official["time"], format="ISO8601")
+official["time_month"] = official["time"].dt.to_period("M")
+print(official["time_month"].value_counts().head(20))
 
-
+#highest month
+counts = official["time_month"].value_counts()
+print("Most use month: ", counts.idxmax(), "with", counts.max(), "plays")
 
