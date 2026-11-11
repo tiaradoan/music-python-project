@@ -19,7 +19,7 @@ official = history[history["title"].str.contains("Official|Live|Concert|MV|M/V|P
 
 #time limit
 official["time"] = pd.to_datetime(official["time"], format="ISO8601")
-official["time_month"] = official["time"].dt.to_period("M")
+official["time_month"] = official["time"].dt.strftime("%Y-%m")
 
 
 #highest month
@@ -29,3 +29,7 @@ counts = official["time_month"].value_counts()
 col1, col2 = st.columns(2)
 col1.metric("Top month", str(counts.idxmax()))
 col2.metric("Amount of times", str(counts.max()))
+
+#monthly chart
+st.subheader("Plays per month")
+st.bar_chart(counts.sort_index())
