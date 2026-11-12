@@ -33,3 +33,17 @@ col2.metric("Amount of times", str(counts.max()))
 #monthly chart
 st.subheader("Plays per month")
 st.bar_chart(counts.sort_index())
+
+
+#top songs and top channels
+left,right = st.columns(2)
+
+top_songs = official["clean_title"].value_counts().head(10)
+left.subheader("Top songs")
+left.dataframe(top_songs)
+
+top_channels = official["channel"].value_counts().head(10)
+right.subheader("Top channels")
+right.dataframe(top_channels)
+
+
