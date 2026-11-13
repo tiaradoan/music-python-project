@@ -3,7 +3,15 @@ import pandas as pd
 
 st.title("My Youtube Wrapped")
 
-history = pd.read_json("private/history.json")
+#add dropbox
+st.header("Your Dropbox")
+uploaded = st.file_uploader("Upload your music history", type="json")
+if uploaded is None:
+    st.write("Please upload a file first!")
+    st.stop()
+
+
+history = pd.read_json(uploaded)
 
 #most common channel
 history["channel"] = history["subtitles"].str.get(0).str.get("name")
@@ -45,5 +53,6 @@ left.dataframe(top_songs)
 top_channels = official["channel"].value_counts().head(10)
 right.subheader("Top channels")
 right.dataframe(top_channels)
+
 
 
