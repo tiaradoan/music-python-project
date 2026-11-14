@@ -19,7 +19,7 @@ history["channel"] = history["subtitles"].str.get(0).str.get("name")
 
 
 #remove "Watched"
-history["clean_title"] = history["title"].str.replace("Đã xem ", "").str.replace("Watched ", "") 
+history["clean_title"] = history["title"].str.replace(r"Đã xem |Watched |Vous avez regardé |Pinanood ang | adlı videoyu izlediniz|を視聴しました|观看了 |觀看 |을\(를\) 시청했습니다", "", regex=True).str.strip()
 
 
 #filtering music 
