@@ -4,7 +4,8 @@ import pandas as pd
 st.title("My Youtube Wrapped")
 
 #add dropbox
-st.header("Your Dropbox")
+st.header("Music History")
+st.caption("🔒 Your file is only used to build this page and is never saved or shared!")
 uploaded = st.file_uploader("Upload your music history", type="json")
 if uploaded is None:
     st.write("Please upload a file first!")
@@ -18,7 +19,7 @@ history["channel"] = history["subtitles"].str.get(0).str.get("name")
 
 
 #remove "Watched"
-history["clean_title"] = history["title"].str.replace("Đã xem ", "")
+history["clean_title"] = history["title"].str.replace("Đã xem ", "").str.replace("Watched ", "") 
 
 
 #filtering music 
