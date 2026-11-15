@@ -6,7 +6,22 @@ st.title("My Youtube Wrapped")
 #add dropbox
 st.header("Music History")
 st.caption("🔒 Your file is only used to build this page and is never saved or shared!")
+
+#guideline
+with st.expander("How to take your history file from Google Takeout"):
+    st.markdown(""" 
+1. Go to [takeout.google.com](https://takeout.google.com)
+2. Click "Deselect all", then tick only **YouTube and YouTube Music**
+3. In "All YouTube data included", keep only **history**
+4. In "Multiple formats", change history to **JSON**
+5. Create and export. Google emails a zip (can take minutes to days! please be patient and remember to come back here 😋)
+6. Unzip it and upload watch-history.json here
+
+""")
+    
+
 uploaded = st.file_uploader("Upload your music history", type="json")
+
 if uploaded is None:
     st.write("Please upload a file first!")
     st.stop()
