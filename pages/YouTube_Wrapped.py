@@ -11,12 +11,15 @@ st.caption("🔒 Your file is only used to build this page and is never saved or
 with st.expander("How to take your history file from Google Takeout"):
     st.markdown(""" 
 1. Go to [takeout.google.com](https://takeout.google.com)
-2. Click "Deselect all", then tick only **YouTube and YouTube Music**
-3. In "All YouTube data included", keep only **history**
-4. In "Multiple formats", change history to **JSON**
-5. Create and export. Google emails a zip (can take minutes to days! please be patient and remember to come back here 😋)
-6. Unzip it and upload watch-history.json here
-
+2. Click "Deselect all", then scroll all the way down and tick only **YouTube and YouTube Music** (Do not click **next step** yet!)
+3. In "All YouTube data included", keep only **history** 
+4. In "Multiple formats", scroll down to "diary" and change HTML to **JSON** -> Click OK
+5. In "Includes all data on YouTube", click "Deselected all" then click "history" only -> Click OK
+6. Time for "Next Step"!
+7. In "Destination", choose "send the download link via email" and **.zip** file
+8. Google emails a zip (can take minutes to days! please be patient and remember to come back here 😋)
+9. Unzip it and upload watch-history.json here
+                
 """)
     
 
