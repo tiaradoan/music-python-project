@@ -48,6 +48,28 @@ official = history[history["title"].str.contains("Official|Live|Concert|MV|M/V|P
 official["time"] = pd.to_datetime(official["time"], format="ISO8601")
 official["time_month"] = official["time"].dt.strftime("%Y-%m")
 
+#time range option
+time_range = st.selectbox("Pick a time range", ["All time", "Last month", "Last 3 months", "Last 6 months", "Last year"])
+
+#time
+latest = official["time"].max()
+if time_range == "Last month":
+    start = latest - pd.DateOffset(months=1)
+    official = official[official["time"] >= start]
+elif time_range == "Last 3 months":
+    start = latest - pd.DateOffset(months=3)
+    official = official[official["time"]>=start]
+elif time_range == "Last 6 months":
+    start = latest - pd.DateOffset(months=6)
+    official = official[official["time"]>=start]
+elif time_range == "Last year":
+    start = latest - pd.DateOffset(months=12)
+    official = official[official["time"]>=start]
+
+
+
+
+
 
 #highest month
 counts = official["time_month"].value_counts()
@@ -72,6 +94,9 @@ left.dataframe(top_songs)
 top_channels = official["channel"].value_counts().head(10)
 right.subheader("Top channels")
 right.dataframe(top_channels)
+
+
+
 
 
 
