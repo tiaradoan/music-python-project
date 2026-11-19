@@ -47,6 +47,7 @@ official = history[history["title"].str.contains("Official|Live|Concert|MV|M/V|P
 #time limit
 official["time"] = pd.to_datetime(official["time"], format="ISO8601")
 official["time_month"] = official["time"].dt.strftime("%Y-%m")
+official["time_year"] = official["time"].dt.strftime("%Y")
 
 #time range option
 time_range = st.selectbox("Pick a time range", ["All time", "Last month", "Last 3 months", "Last 6 months", "Last year"])
@@ -69,15 +70,15 @@ elif time_range == "Last year":
 
 
 
-
-
 #highest month
 counts = official["time_month"].value_counts()
+counts_year = official["time_year"].value_counts()
 
 #improve ux
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 col1.metric("Top month", str(counts.idxmax()))
 col2.metric("Amount of times", str(counts.max()))
+col3.metric("Top year", str(counts_year.idxmax()))
 
 #monthly chart
 st.subheader("Plays per month")
