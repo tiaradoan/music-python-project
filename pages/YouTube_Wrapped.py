@@ -42,6 +42,7 @@ history["clean_title"] = history["title"].str.replace(r"Đã xem |Watched |Vous 
 
 #filtering music 
 official = history[history["title"].str.contains("Official|Live|Concert|MV|M/V|Performance|Session|ft|EP|Music|Set|feat|Music Video|Audio|Lyrics|Visualizer|VEVO|Album|Original|Cover|Remix|Playlist", case = False)]
+official = official[~official["title"].str.contains("Episode|Vlog|Reaction|Tập|Review|Trailer|Livestream", case=False)]
 
 
 #time limit
