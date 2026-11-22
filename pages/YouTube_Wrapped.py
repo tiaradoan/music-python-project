@@ -18,6 +18,7 @@ with st.expander("How to take your history file from Google Takeout"):
 6. Time for "Next Step"!
 7. In "Destination", choose "send the download link via email" and **.zip** file
 8. Google emails a zip (can take minutes to days! please be patient and remember to come back here 😋)
+**No email? Go to [takeout.google.com/manage](https://takeout.google.com/manage)**
 9. Unzip it and upload watch-history.json here
                 
 """)
@@ -43,6 +44,10 @@ history["clean_title"] = history["title"].str.replace(r"Đã xem |Watched |Vous 
 #filtering music 
 official = history[history["title"].str.contains("Official|Live|Concert|MV|M/V|Performance|Session|ft|EP|Music|Set|feat|Music Video|Audio|Lyrics|Visualizer|VEVO|Album|Original|Cover|Remix|Playlist", case = False)]
 official = official[~official["title"].str.contains("Episode|Vlog|Reaction|Tập|Review|Trailer|Livestream", case=False)]
+
+#filter official name
+official["clean_title"]= official["clean_title"].str.replace(r"\(.*?\)|\[.*?\]", "", regex=True).str.strip()
+official["clean_title"] = official["clean_title"].str.replace(r"[\|] *Official.*", "", regex=True, case=False).str.strip()
 
 
 #time limit
@@ -78,7 +83,7 @@ counts_year = official["top_year"].value_counts()
 #improve ux
 col1, col2, col3 = st.columns(3)
 col1.metric("Top month", str(counts.idxmax()))
-col2.metric("Amount of times", str(counts.max()))
+col2.metric("Top month plays", str(counts.max()))
 col3.metric("Top year", str(counts_year.idxmax()))
 
 #monthly chart
