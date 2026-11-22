@@ -94,11 +94,11 @@ st.bar_chart(counts.sort_index())
 #top songs and top channels
 left,right = st.columns(2)
 
-top_songs = official["clean_title"].value_counts().head(20)
+top_songs = official["clean_title"].value_counts().head(20).rename_axis("Song").rename("Plays")
 left.subheader("Top songs")
 left.dataframe(top_songs)
 
-top_channels = official["channel"].value_counts().head(20)
+top_channels = official["channel"].value_counts().head(20).rename_axis("Channel").rename("Plays")
 right.subheader("Top channels")
 right.dataframe(top_channels)
 
