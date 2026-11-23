@@ -1,6 +1,31 @@
 import streamlit as st
 import pandas as pd
 
+# ===== MAP =====
+# TABLES (variables that hold a whole table)
+#   history    = every video you watched, straight from the uploaded file
+#   official   = only the music rows (keyword filter + block list + time range)
+#   song_plays = only the plays of the one song picked in "Song history"
+#
+# COLUMNS (inside history / official)
+#   title       = raw video title, e.g. "Đã xem .... (Official MV)" (used for FILTERING)
+#   clean_title = tidy title for SHOWING, e.g. "Soobin - Vụt Tan"
+#   channel     = the YouTube channel that posted the video
+#   time        = exact date + time of the play
+#   time_month  = just the month, e.g. "2023-03"
+#   top_year    = just the year, e.g. "2025"
+#
+# OTHER VARIABLES
+#   uploaded     = the file the visitor uploaded
+#   time_range   = what's picked in the time dropdown, e.g. "Last month"
+#   latest       = date of the newest play (we count back from this)
+#   counts       = plays per month (for "Plays per month" + top month cards)
+#   counts_year  = plays per year (for the "Top year" card)
+#   top_songs    = top 20 songs with their play counts
+#   top_channels = top 20 channels with their play counts
+#   song_history = the song picked in the "Pick a song" dropdown
+#   song_counts  = plays per month of that one song (for its chart)
+
 st.title("My Youtube Wrapped")
 
 #add dropbox
