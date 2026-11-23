@@ -75,7 +75,6 @@ elif time_range == "Last year":
 
 
 
-
 #highest month
 counts = official["time_month"].value_counts()
 counts_year = official["top_year"].value_counts()
@@ -102,7 +101,12 @@ top_channels = official["channel"].value_counts().head(20).rename_axis("Channel"
 right.subheader("Top channels")
 right.dataframe(top_channels)
 
-
+#song history
+st.subheader("Song history")
+song_history = st.selectbox("Pick a song", top_songs.index)
+song_plays = official[official["clean_title"] == song_history]
+song_counts = song_plays["time_month"].value_counts()
+st.bar_chart(song_counts.sort_index())
 
 
 
