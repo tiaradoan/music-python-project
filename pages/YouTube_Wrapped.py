@@ -72,7 +72,7 @@ official = official[~official["title"].str.contains("Episode|Vlog|Reaction|Tập
 
 #filter official name
 official["clean_title"]= official["clean_title"].str.replace(r"\(.*?\)|\[.*?\]", "", regex=True).str.strip()
-official["clean_title"] = official["clean_title"].str.replace(r"[\|] *Official.*", "", regex=True, case=False).str.strip()
+official["clean_title"] = official["clean_title"].str.replace(r"[|/] *Official.*", "", regex=True, case=False).str.strip()
 
 
 #time limit
@@ -84,6 +84,7 @@ official["top_year"] = official["time"].dt.strftime("%Y")
 time_range = st.selectbox("Pick a time range", ["All time", "Last month", "Last 3 months", "Last 6 months", "Last year"])
 
 #time
+all_music = official 
 latest = official["time"].max()
 if time_range == "Last month":
     start = latest - pd.DateOffset(months=1)
@@ -131,7 +132,9 @@ st.subheader("Song history")
 song_history = st.selectbox("Pick a song", top_songs.index)
 song_plays = official[official["clean_title"] == song_history]
 song_counts = song_plays["time_month"].value_counts()
-st.bar_chart(song_counts.sort_index())
+st.line_chart(song_counts.sort_index())
+
+
 
 
 
