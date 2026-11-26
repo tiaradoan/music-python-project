@@ -134,6 +134,20 @@ song_plays = official[official["clean_title"] == song_history]
 song_counts = song_plays["time_month"].value_counts()
 st.line_chart(song_counts.sort_index())
 
+#trending
+recent_start = latest - pd.DateOffset(months=1)    # DATE: 1 month ago
+recent = all_music[all_music["time"] >= recent_start]    # TABLE: last month's plays
+
+before_start = latest - pd.DateOffset(months=2)    # DATE: 2 months ago
+before = all_music[(all_music["time"] >= before_start) & (all_music["time"] < recent_start)]    # TABLE: the month before
+recent_counts = recent["clean_title"].value_counts()
+before_counts = before["clean_title"].value_counts()
+
+#trending growth
+growth = recent_counts.sub(before_counts, fill_value=0).rename_axis("Song").rename("Growth").sort_values(ascending=False)
+st.subheader("Trending")
+st.dataframe(growth.sort_values(ascending=False).head(20))
+
 
 
 
