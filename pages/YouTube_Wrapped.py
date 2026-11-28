@@ -51,6 +51,12 @@ with st.expander("How to take your history file from Google Takeout"):
 
 uploaded = st.file_uploader("Upload your music history", type="json")
 
+#demo
+with open("data/demo_history.json") as f:
+    demo_file = f.read()
+
+st.download_button("Download demo file", demo_file, file_name="demo_history.json")
+
 if uploaded is None:
     st.write("Please upload a file first!")
     st.stop()
